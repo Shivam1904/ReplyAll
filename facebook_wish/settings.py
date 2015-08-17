@@ -118,7 +118,7 @@ SOCIAL_AUTH_PIPELINE = (
 
 SOCIAL_AUTH_FACEBOOK_KEY = '1609198282691297'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'adba82042e447ecb5e07b2f8f9c6fd3b'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email','publish_actions','user_birthday','user_posts','user_status','user_events']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email','publish_actions','user_birthday',    'user_posts','user_status','user_events']
 
-LOGIN_REDIRECT_URL = '/details'
+LOGIN_REDIRECT_URL = '/members'
 
