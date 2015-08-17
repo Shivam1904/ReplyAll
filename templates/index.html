@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>One Click Reply</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/jquery_min.js"></script>
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/style.css" type='text/css' rel="stylesheet">
+</head>
+
+<body class="background">
+    <nav class="navbar navbar-facebook">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">One Click Reply</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% if user.is_authenticated %}
+        <label>Hi <b>{{ details.first_name }}</b> ,</label><br>
+        <a href="/logout">Log out</a>
+        </p>
+        </div>
+        {% else %}
+        <p><a href="login/facebook">Login via Facebook</a></p>
+        {% endif %}
+    </div>
+</body>
+</html>
