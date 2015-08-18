@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import logout as auth_logout
 from social.apps.django_app.default.models import *
 from django.contrib.auth.models import User
+from forms import NameForm
 
 SOCIAL_AUTH_FACEBOOK_KEY = '1609198282691297'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'adba82042e447ecb5e07b2f8f9c6fd3b'
@@ -15,10 +16,18 @@ def logout(request):
     return redirect('/')
 
 def homepage(request):
-
 	return render(request, 'index.html')
 
-def details(request):
+def get_msg(request):
+	user_msg = "Thanks :)"
+	form = NameForm()
+	if request.method == "POST":
+		form = NameForm(request.POST)
+		if form.is_valid():
+				# p = Person()
+				user_msg = form.cleaned_data["msg"]
+				print user_msg
+
 	details = {}
 	facebook_profile = request.user
 	user = User.objects.filter(username = facebook_profile)
@@ -43,10 +52,7 @@ def details(request):
 	current_bday = bday_month+"/"+bday_date+"/"+current_year
 	next_day = bday_month+"/"+bday_nextdate+"/"+current_year
 
-	print current_bday
-	print next_day
-
-	url = "https://graph.facebook.com/v2.4/me/feed?since="+"08/15/2015"+"&until="+"08/16/2015"
+	url = "https://graph.facebook.com/v2.4/me/feed?since="+"08/17/2015"+"&until="+"08/18/2015"
 	# url = "https://graph.facebook.com/v2.4/me"
 	parameters = {'access_token': access_token}
 	related_list = requests.get(url, params = parameters)
@@ -59,13 +65,18 @@ def details(request):
 			parameters = {'access_token': access_token}
 			per_post = requests.get(url, params = parameters).json()
 			print per_post
-			# thanks(per_post['id'],access_token)
+			bday_list = ["birthday", "birth", "bdae", "bday", "b'day", "janamdin", "janmdin", "returns", "day", "brth", "hbd", "hb", "happy", "day", "wish", "wishing"]
+			for txt in bday_list:
+				if txt in per_post['message']:
+					thanks(per_post['id'], user_msg, access_token)
+					break
 		except:
-			print "Error "
+			print "Error"
 	return render(request, 'index.html',{ 'details' : details })
 
-
-def thanks(post_id,access_token):
-	MESSAGE = ":/"
+def thanks(post_id, user_msg, access_token):
+	MESSAGE = user_msg
+	parameters = {'access_token': access_token }
+	requests.post("https://graph.facebook.com/%s/likes/" %(post_id), params = parameters)
 	parameters = {'access_token': access_token, 'message': MESSAGE}
 	requests.post("https://graph.facebook.com/%s/comments" %(post_id), data = parameters)

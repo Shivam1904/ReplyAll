@@ -1,0 +1,61 @@
+.container{
+	position: relative;
+}
+
+.background{
+	background: url("/static/fonts/back.jpg");
+}
+.navbar-facebook{
+
+	background-color: #3b5998 !important;
+}
+.navbar-brand{
+	font-family : ubuntu, arial, sans-serif;
+	letter-spacing: -1px;
+	color:white !important;
+}
+.mainbox {
+	margin: 0 auto;
+    padding: 20px 8px 10px 8px !important;
+    width: 50%;
+    margin-top:10%;
+    background-color: #8b9dc3 !important;
+	border-radius: 0 !important;
+}	
+
+.btn-facebook-na{
+	margin-right: 20px;
+	margin-left: auto;
+	background-color: #3b5998 !important;
+	color: white;
+	text-align: center;
+	font-weight: 600;
+	margin-top: 5px;
+	padding: 8px !important;
+	border-radius: 0 !important;
+}	
+
+.btn-facebook{
+	width: 100px;
+	margin-right: 20px;
+	margin-left: auto;
+	background-color: #3b5998 !important;
+	color: white;
+	text-align: center;
+	font-weight: 600;
+	margin-top: 5px;
+	padding: 5px !important;
+	border-radius: 0 !important;
+}	
+
+.btn-facebook:hover{
+	color: #ccc	;
+}	
+
+.head_name{
+	font-size: 20px;
+}
+
+.bday {
+	color:#3b5998;
+}

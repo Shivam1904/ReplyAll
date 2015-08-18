@@ -18,12 +18,37 @@
 
     <div class="container">
         {% if user.is_authenticated %}
-        <label>Hi <b>{{ details.first_name }}</b> ,</label><br>
-        <a href="/logout">Log out</a>
-        </p>
+        <div class="mainbox jumbotron" >
+        <img src="{{ details.picture }}" align="right" } /><br />
+        <label class="head_name">Hi <b>{{ details.first_name }}</b> ,</label><br>
+        Seems like you too want sdasd sad asd ad asd as da sda sd asd asd as das d asd asd asd asd asd as dasdadss a dsad as das d asdas d asd as da sd asd as da sd sa<br>
+        <hr />
+        <label class="" >Your Birthday:</label> 
+        <label class="bday" >{{ details.birthday }}</label><br>
+
+        <form action="/get_msg/" method="post">
+        {% csrf_token %}
+
+            <div class="form-group">
+              <label class="" >Your Message:</label><br>
+              <input type="text" name="msg" class="form-control" placeholder="Thanks :)" name="" id="usr" required>
+            </div>
+
+            <p>
+            <input type="submit" class="btn btn-facebook btn-lg" href="#" value="Post" role="button" align="right">
+            <a class="btn btn-facebook btn-lg pull-right" href="/logout" role="button" align="right">Log out</a>
+            </p>
+        </form>
         </div>
+
+
         {% else %}
-        <p><a href="login/facebook">Login via Facebook</a></p>
+        <div class="mainbox jumbotron" >
+        hey there wassip thsi  cb dsn  s dhhoashdfo  sf fdhsfs fos fsdf sodf hsdfh sdof sfsodf hsdofh odf h
+        <center>
+        <p><a class="btn btn-facebook-na btn-lg " href="login/facebook" role="button" align="center">Login via Facebook</a></p>
+        </center>
+        </div>
         {% endif %}
     </div>
 </body>
